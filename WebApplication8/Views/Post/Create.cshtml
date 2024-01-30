@@ -1,0 +1,69 @@
+﻿@using WebApplication8.Models
+@using WebApplication8.View_Model
+
+@{
+    TempData["title"] = " Creat Post ";
+}
+@model PostVM
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container-xxl   ">
+    <div class="authentication-wrapper authentication-basic container-p-y ">
+        <div class="col-md-5">
+            <!-- Register Card -->
+            <div class="card col-md-15">
+                <div class="card-body ">
+                    <span class="text-danger">@TempData["Error"]</span>
+                    <h4 class="mb-2">إنشاء منشور   </h4>
+                    <hr class="my-2">
+
+                    <form id="formAuthentication" class="mb-3" method="POST" asp-action="Create">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="Title" asp-for="Title" class="form-label">Title</label>
+                                <input type="text" class="form-control" asp-for="Title"
+                                       placeholder="ادخل العنوان " required />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="content" asp-for="Content" class="form-label">Content</label>
+                                <input type="text" class="form-control" asp-for="Content"
+                                       placeholder=" ادخل المحتوى" required />
+                                <span asp-validation-for="Content" class="text-danger"></span>
+
+                            </div>
+
+
+                        </div>
+                       
+                        <div class="text-center ">
+                            <button class="btn btn-primary" onclose="btn-page-block-multiple" type="submit"
+                                    style="background-color:royalblue;color:white;">
+                               حفظ
+                            </button>
+                        </div>
+
+                       
+
+                    </form>
+                    <!-- <button class="btn btn-primary btn-page-block-multiple">Multiple Message</button> -->
+
+                
+
+
+
+                </div>
+            </div>
+
+            <!-- Register Card -->
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,96 @@
+﻿@model AppUser
+@{
+    string rol;
+    if (User.IsInRole("Admin"))
+    {
+        rol = "Admin";
+
+
+    }
+    else { rol = "User"; }
+}
+
+<h2>Profile</h2>
+
+<div>
+    <p><strong>userName:</strong> @Model.UserName</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Role:</strong>@rol</p>
+</div>
+
+@*<button id="editButton" class="btn btn-primary">Edit</button>*@
+
+<div id="editFormContainer" style="display:none;">
+    <h3>Edit Profile</h3>
+
+    <form id="editForm" method="post" action="/Account/UpdateProfile">
+        @Html.AntiForgeryToken()
+
+       
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" value="@Model.Email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            @{
+                string userSelected = "";
+                string adminSelected = "";
+                if (rol == "User")
+                {
+                     userSelected = "selected";
+                }
+                else
+                {
+                     adminSelected ="selected";
+                }
+            }
+           
+
+          @*  <select id="role" name="role" class="form-control">
+                <option value="User" selected="@userSelected">User</option>
+                <option value="Admin" selected="@adminSelected">Admin</option>
+            </select>
+            *@
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+
+@*@section Scripts {
+//    <script>
+//        $(document).ready(function () {
+//            $('#editButton').click(function () {
+//                $('#editFormContainer').show();
+//            });
+
+//            $('#editForm').submit(function (event) {
+//                event.preventDefault(); // Prevent form submission
+
+//                var formData = $(this).serialize(); // Serialize form data
+
+//                $.ajax({
+//                    url: $(this).attr('action'),
+//                    type: $(this).attr('method'),
+//                    data: formData,
+//                    beforeSend: function () {
+//                        // Show loading spinner or disable submit button
+//                    },
+//                    success: function (response) {
+//                        // Handle successful response
+//                    },
+//                    error: function (xhr, status, error) {
+//                        // Handle error response
+//                    },
+//                    complete: function () {
+//                        // Hide loading spinner or enable submit button
+//                    }
+//                });
+//            });
+//        });
+//    </script>
+//}
+*@

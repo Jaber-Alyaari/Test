@@ -1,0 +1,80 @@
+﻿@using WebApplication8.Models
+@using WebApplication8.View_Model
+@using Microsoft.AspNetCore.Identity
+@model LoginVM
+@{
+
+   
+    TempData["title"] = "تسجيل الدخول";
+    TempData["Login"] = "active";
+  
+}
+
+<!-- Content -->
+
+<div class="container-xxl   ">
+    <div class="authentication-wrapper authentication-basic container-p-y ">
+        <div class="authentication-inner py-4">
+            <!-- Register Card -->
+     
+            <div class="card col-md-11">
+
+                <div class="card-body ">
+
+                    <h4 class="mb-2"> تسجيل الدخول</h4>
+
+                    <hr class="my-2">
+                    <div asp-validation-summary=All class="text-danger"></div>
+
+                    <form id="formAuthentication" class="mb-3" asp-action="Login" method="POST">
+
+
+                        <div class="col-md-11 mb-3 ">
+                            <label for="email" class="form-label fw-semibold">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" asp-for="Email"
+                                   placeholder="ادخل الإيميل الخاص بك" />
+                        </div>
+
+                        <div class="form-password-toggle col-md-11 mb-3">
+                            <label class="form-label fw-semibold" for="password">كلمة المرور</label>
+                            <div class="input-group input-group-merge">
+                                <input type="password" class="form-control" asp-for="Password"
+                                       placeholder="ادخل كلمة المرور" aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer">
+                                    <i class="bx bx-hide"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="checkbox">
+                                <label asp-for="RememberMe" class="form-label">
+                                    <input class="form-check-input" asp-for="RememberMe" />
+                                    تذكرني
+                                </label>
+                            </div>
+
+
+                        <div class="text-center ">
+                            <button class="btn btn-primary  " style="background-color:royalblue;color:white;">تسجيل الدخول </button>
+
+                        </div>
+                    </form>
+
+                    <p class="text-center">
+                        <span> ليس لديك حساب؟</span>
+                        <a asp-controller="Account" asp-action="Register">
+                            <span style="color:royalblue;">إنشاء حساب الآن</span>
+                        </a>
+                    </p>
+
+
+
+
+                </div>
+            </div>
+
+            <!-- Register Card -->
+        </div>
+
+    </div>
+</div>

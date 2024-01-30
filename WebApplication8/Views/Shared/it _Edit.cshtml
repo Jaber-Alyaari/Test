@@ -1,0 +1,21 @@
+﻿@model Post
+
+<h2>Edit Post</h2>
+
+@using (Html.BeginForm("Edit", "Post", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.Id)
+    <div>
+        <label>Title:</label>
+        @Html.TextBoxFor(model => model.Title)
+    </div>
+    <div>
+        <label>Content:</label>
+        @Html.TextAreaFor(model => model.Content)
+    </div>
+    <div>
+        <label>state:</label>
+        @Html.TextBoxFor(model => model.IsActive)
+   </div>
+    <button type="submit">Save</button>
+}

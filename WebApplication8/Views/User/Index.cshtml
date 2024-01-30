@@ -1,0 +1,17 @@
+﻿@model IEnumerable<AppUser>
+
+<h2>Users with Recent Posts</h2>
+
+@if (Model.Any())
+{
+    <ul>
+        @foreach (var user in Model)
+        {
+            <li>@user.UserName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No users have made posts in the last 30 days.</p>
+}

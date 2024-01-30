@@ -1,0 +1,99 @@
+﻿@using WebApplication8.Models
+@using WebApplication8.View_Model
+
+@{
+    TempData["title"] = " إنشاء حساب";
+}
+@model RegisterVM
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="container-xxl   ">
+    <div class="authentication-wrapper authentication-basic container-p-y ">
+        <div class="col-md-5">
+            <!-- Register Card -->
+            <div class="card col-md-15">
+                <div class="card-body ">
+                    <span class="text-danger">@TempData["Error"]</span>
+                    <h4 class="mb-2">إنشاء حساب  </h4>
+                    <hr class="my-2">
+
+                    <form id="formAuthentication" class="mb-3" method="POST" asp-action="Register">
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" asp-for="Name" class="form-label">الاسم</label>
+                                <input type="text" class="form-control" asp-for="Name"
+                                       placeholder="ادخل الاسم  الخاص بك" required />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" asp-for="Email" class="form-label">الإيميل</label>
+                                <input type="email" class="form-control" asp-for="Email"
+                                       placeholder="ادخل الإيميل الخاص بك" required />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="form-password-toggle col-md-6 mb-3">
+                                <label class="form-label" asp-for="Password" for="password">كلمة السر</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" class="form-control" asp-for="Password"
+                                           placeholder="ادخل كلمة السر" aria-describedby="password" id="Password" required />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+
+                                </div>
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                            <div class="form-password-toggle col-md-6 mb-3">
+                                <label class="form-label" asp-for="ConfirmPassword" for="password">أعد كتابة كلمة السر</label>
+                                <div class="input-group input-group-merge">
+                                    <input type="password" id="ConfirnPassword" class="form-control" asp-for="ConfirmPassword"
+                                           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                           aria-describedby="password" />
+                                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="text-danger">@TempData["found"]</h6>
+                        <div class="text-center ">
+                            <button class="btn btn-primary" onclose="btn-page-block-multiple" type="submit"
+                                    style="background-color:royalblue;color:white;">
+                                إنشاء حساب
+                            </button>
+                        </div>
+
+                        <!--<input asp-for="UserName" class="form-control" hidden value="مستخدم موقع"/>-->
+                        <!--<input asp-for="Type" class="form-control" hidden value="0"/>
+                        <input asp-for="Status" class="form-control" hidden value="0"/> -->
+
+                    </form>
+                    <!-- <button class="btn btn-primary btn-page-block-multiple">Multiple Message</button> -->
+
+                    <p class="text-center">
+                        <span>هل لديك حساب مستخدم بالفعل ؟</span>
+                        <a asp-controller="Account" asp-action="Login">
+                            <span style="color:royalblue;">قم بتسجيل دخولك الآن</span>
+                        </a>
+                    </p>
+
+
+
+                </div>
+            </div>
+
+            <!-- Register Card -->
+        </div>
+
+    </div>
+</div>
+
+
